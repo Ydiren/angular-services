@@ -33,16 +33,17 @@ export class DashboardComponent implements OnInit {
       );
     this.mostPopularBook = this.dataService.mostPopularBook;
 
-    this.dataService.getAuthorRecommendation(1)
-      .then(
-        (author: string) => this.loggerService.log(author),
-        (err: string) => this.loggerService.error(`The promise was rejected: ${err}`)
-      )
-      .catch((error: Error) => this.loggerService.error(error.message));
+    this.getAuthorRecommendationAsync(1)
+      .catch(err => this.loggerService.error(err));
 
     this.loggerService.log('Done with dashboard initialization.');
   }
 
+  private async getAuthorRecommendationAsync(readerID: number): Promise<void> {
+    const author: string = await this.dataService.getAuthorRecommendation(readerID);
+    this.loggerService.log(author);
+    throw new Error('Something went wrong.');
+  }
   deleteBook(bookID: number): void {
     console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
   }
