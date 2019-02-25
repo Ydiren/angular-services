@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Source\booktracker\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! C:\Source\booktracker\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! D:\projects\GitHub\pluralsight\angular-services\06\demos\demos\Demo\booktracker\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! D:\projects\GitHub\pluralsight\angular-services\06\demos\demos\Demo\booktracker\src\styles.css */"./src/styles.css");
 
 
 /***/ })

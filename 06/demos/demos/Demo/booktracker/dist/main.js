@@ -547,8 +547,9 @@ module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var app_core_logger_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! app/core/logger.service */ "./src/app/core/logger.service.ts");
-/* harmony import */ var app_core_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/core/data.service */ "./src/app/core/data.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var app_core_logger_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/core/logger.service */ "./src/app/core/logger.service.ts");
+/* harmony import */ var app_core_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! app/core/data.service */ "./src/app/core/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -596,10 +597,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(loggerService, dataService) {
+    function DashboardComponent(loggerService, dataService, title) {
         this.loggerService = loggerService;
         this.dataService = dataService;
+        this.title = title;
         this.loggerService.log('Creating the dashboard!');
     }
     DashboardComponent.prototype.ngOnInit = function () {
@@ -610,6 +613,7 @@ var DashboardComponent = /** @class */ (function () {
         this.mostPopularBook = this.dataService.mostPopularBook;
         this.getAuthorRecommendationAsync(1)
             .catch(function (err) { return _this.loggerService.error(err); });
+        this.title.setTitle("Book Tracker " + _angular_core__WEBPACK_IMPORTED_MODULE_0__["VERSION"].full);
         this.loggerService.log('Done with dashboard initialization');
     };
     DashboardComponent.prototype.getAuthorRecommendationAsync = function (readerID) {
@@ -638,8 +642,9 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: []
         }),
-        __metadata("design:paramtypes", [app_core_logger_service__WEBPACK_IMPORTED_MODULE_1__["LoggerService"],
-            app_core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
+        __metadata("design:paramtypes", [app_core_logger_service__WEBPACK_IMPORTED_MODULE_2__["LoggerService"],
+            app_core_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["Title"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -715,17 +720,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var EditBookComponent = /** @class */ (function () {
-    function EditBookComponent(route, dataSerivce, loggerService) {
+    function EditBookComponent(route, dataService, loggerService) {
         this.route = route;
-        this.dataSerivce = dataSerivce;
+        this.dataService = dataService;
         this.loggerService = loggerService;
     }
     EditBookComponent.prototype.ngOnInit = function () {
         var bookID = parseInt(this.route.snapshot.params['id']);
-        this.selectedBook = this.dataSerivce.getBookById(bookID);
+        this.selectedBook = this.dataService.getBookById(bookID);
     };
     EditBookComponent.prototype.setMostPopular = function () {
-        this.dataSerivce.setMostPopularBook(this.selectedBook);
+        this.dataService.setMostPopularBook(this.selectedBook);
         this.loggerService.log("New most popular book: " + this.selectedBook.title);
     };
     EditBookComponent.prototype.saveChanges = function () {
@@ -937,7 +942,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Source\booktracker\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\projects\GitHub\pluralsight\angular-services\06\demos\demos\Demo\booktracker\src\main.ts */"./src/main.ts");
 
 
 /***/ })
